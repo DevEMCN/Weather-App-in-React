@@ -1,5 +1,20 @@
+var webpack = require('webpack');
+
 module.exports = {
-  entry: './app/app.jsx',
+  entry: [
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
+    './app/app.jsx'
+  ],
+  externals: {
+    jquery: 'jQuery'
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -10,11 +25,11 @@ module.exports = {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
       Weather: 'app/components/Weather.jsx',
+      WeatherForm: 'app/components/WeatherForm.jsx',
+      WeatherMessage: 'app/components/WeatherMessage.jsx',
       About: 'app/components/About.jsx',
       Examples: 'app/components/Examples.jsx',
-      WeatherMessage: 'app/components/WeatherMessage.jsx',
-      WeatherForm: 'app/components/WeatherForm.jsx',
-      openWeatherMap: 'app/API/openWeatherMap.jsx'
+      openWeatherMap: 'app/api/openWeatherMap.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -23,10 +38,10 @@ module.exports = {
       {
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015', 'stage-0']
         },
         test: /\.jsx?$/,
-        exclude: /(node_modules | bower_compenents)/
+        exclude: /(node_modules|bower_components)/
       }
     ]
   },
