@@ -16,7 +16,6 @@ var Examples = (props) =>
         </li>
       </ol>
     </div>
-
   );
 };
 module.exports = Examples;
