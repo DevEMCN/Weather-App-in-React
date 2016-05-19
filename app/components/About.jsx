@@ -4,8 +4,13 @@ var About = (props) =>
 {
   return(
     <div>
-      <h3>About</h3>
-      <p>Welcome to the About Page</p>
+      <h1 className="text-center">About</h1>
+      <p>This is a weather application built on react.</p>
+      <p>Tools used:</p>
+      <ul>
+        <li><a href="https://facebook.github.io/react">React</a> - React Framework</li>
+        <li><a href="http://openweathermap.org">Open Weather App</a> - Weather Data</li>
+      </ul>
     </div>
 
   );
